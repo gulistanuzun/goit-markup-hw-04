@@ -59,15 +59,30 @@ a {
 
 .links > li > a {
   color: #2e2f42;
+  position: relative;
+  text-decoration: none;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.333;
+  padding-bottom: 24px;
   transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.address > li > a {
+.links > li > a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #404bbf;
+  transition: width 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.links > li > a .address > li > a {
   color: #434455;
   line-height: 1.333;
   transition-property: color;
@@ -222,7 +237,7 @@ a {
 
 .social-icon-container > li:hover,
 .footer-social-icon-container > li:hover {
-  background-color: #404bbf;
+  background-color: #31d0aa;
 }
 
 .social-icon {
@@ -307,6 +322,23 @@ a {
   flex-direction: column;
 }
 
+.portfolio-context {
+  position: absolute;
+  background-color: #4d5ae5;
+  height: 300px;
+  padding-top: 40px;
+  padding-left: 32px;
+  color: #f4f4fd;
+  line-height: 1.333;
+  letter-spacing: 0.02em;
+  size: 16px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .portfolio {
   display: flex;
   flex-wrap: wrap;
@@ -323,6 +355,7 @@ a {
   border-left: 1px solid #e7e9fc;
   border-right: 1px solid #e7e9fc;
   cursor: pointer;
+  position: relative;
   transition-property: box-shadow;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -331,6 +364,11 @@ a {
 .portfolio > li:hover {
   box-shadow: 0px 1px 1px #2e2f42;
 }
+
+.portfolio > li:hover .portfolio-context {
+  opacity: 1;
+}
+
 .portfolio-detail {
   display: flex;
   flex-direction: column;
